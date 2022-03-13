@@ -1,3 +1,6 @@
 [submodule "libs/eventpp"]
 	path = libs/eventpp
 	url = https://github.com/wqking/eventpp.git
+[submodule "libs/digraph"]
+	path = libs/digraph
+	url = https://github.com/grame-cncm/digraph.git

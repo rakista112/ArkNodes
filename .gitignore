@@ -3,7 +3,6 @@ ArkNodes.dir/
 build
 CMakeFiles
 Debug
-libs
 ArkReactor/
 x64
 *.vcx*
