@@ -1,12 +1,19 @@
 #ifndef GRAPH_NODEBASE_HPP
 #define GRAPH_NODEBASE_HPP
 #include <string>
-
+#include <iostream>
+#include <compare>
 namespace ArkNodes::Graph {
     class NodeBase {
         public: 
-        virtual const std::string getOutput() = 0;
-        
+        std::string getOutput();
+        friend std::ostream& operator<<(std::ostream& os, NodeBase& dt);
+        /*
+        bool operator<(const NodeBase& node) const{
+            return true;
+        };
+        */
+       auto operator<=>(const NodeBase& node) const = default;
     };
 }
 

@@ -1,12 +1,20 @@
+#define NOMINMAX
+
 #include <iostream>
 #include <Ark/Ark.hpp>
-
 #include <Ark/Compiler/AST/Node.hpp>
 #include <Ark/Compiler/AST/Parser.hpp>
 #include <Ark/Compiler/Compiler.hpp>
-
+#include <digraph.hh>
+#include <digraphop.hh>
 #include <eventpp/eventqueue.h>
 #include <graph/nodes/Node.hpp>
+#include <graph/Graph.hpp>
+#include <graph/ConnectionBase.hpp>
+#include <graph/nodes/NodeBase.hpp>
+#include <graph/ConnectionBase.hpp>
+#include <graph/nodes/TokenNode.hpp>
+#include <graph/nodes/StringNode.hpp>
 
 eventpp::EventQueue<int, void (const int &)> queue;
 
@@ -17,8 +25,6 @@ enum ArkEvent {
 Ark::Value emit_output(std::vector<Ark::Value>& args, Ark::VM* vm)
 {
      // checking argument number
-
-
     if (args.size() != 1)
         throw std::runtime_error("my_function needs 1 argument!");
 
@@ -34,6 +40,11 @@ Ark::Value emit_output(std::vector<Ark::Value>& args, Ark::VM* vm)
 }
 
 int main(int, char**) {
+    std::unique_ptr<ArkNodes::Graph::Graph<ArkNodes::Graph::NodeBase, int>> graph(new ArkNodes::Graph::Graph<ArkNodes::Graph::NodeBase, int>());   
+    auto tokenNode = ArkNodes::Graph::TokenNode("print");
+    auto strNode = ArkNodes::Graph::StringNode("tes3ti3ng");
+    graph->add(tokenNode, strNode, 0);
+    std::cout << graph << std::endl;
     double num = 5;
     double num2 = 19;
     Ark::internal::Node myNode = Ark::internal::Node(num);

@@ -13,7 +13,7 @@ add_executable(ArkNodes
     ${CMAKE_SOURCE_DIR}/src/graph/nodes/StringNode.cpp
 
     )
-set_target_properties(ArkNodes PROPERTIES CXX_STANDARD 17)
+set_target_properties(ArkNodes PROPERTIES CXX_STANDARD 20)
 add_subdirectory(ArkReactor)
 add_subdirectory(libs/eventpp)
 target_include_directories(ArkNodes PUBLIC "include")
